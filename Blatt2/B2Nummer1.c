@@ -53,7 +53,7 @@ void bewertung(int wurf[]){
 
 int main() {
 	int  wurf[5];
-	printf("Programm Würfelspiel\nGrand\tgleiche Augenzahl auf allen 5 Würfeln\nPoker\tgleiche Augenzahl auf 4 Würfeln\nFull House\tgleiche und 2 gleiche Augenzahlen\n\nBitte gibt deine gewürfelten zahlen ein\n");
+	printf("Programm Würfelspiel\nGrand\tgleiche Augenzahl auf allen 5 Würfeln\nPoker\tgleiche Augenzahl auf 4 Würfeln\nFull House\tgleiche und 2 gleiche Augenzahlen\n\nBitte gibt deine gewürfelten zahlen ein\n");
 	abfrage(wurf, 5);
 	bubbleSort(wurf, 5);
 	arrayausgabe(wurf, 5);
