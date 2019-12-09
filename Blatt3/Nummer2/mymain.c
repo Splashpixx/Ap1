@@ -16,7 +16,6 @@ int main() {
 	
 	int end = 0;
 	char xx;
-	
 	char imya[1];
 	
 	do {
@@ -27,6 +26,7 @@ int main() {
 		switch (xx) {
 			case 'Y':
 				printf("Please enter a letter\n");
+				fflush(stdin);
 				scanf("%s", imya);
 				printf("Der Buchstabe %s kommt %i-mal vor.\n", imya, sucheZeichen(name, imya[0]));
 				break;
