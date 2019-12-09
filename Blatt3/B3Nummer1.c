@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <string.h>
-//#include "myfunctions"
 
 int sucheZeichen(const char  s[], char c){
 	int i = 0;
@@ -12,7 +11,6 @@ int sucheZeichen(const char  s[], char c){
 		i++; 
 		
 	}
-	
 	return baum;
 }
 
@@ -31,11 +29,8 @@ int main() {
 	scanf("%s", name);
 	printf("%s has %i letters\n", name, langeZeichne(name));
 	
-	// frage
-	
 	int end = 0;
 	char xx;
-	
 	char imya[1];
 	
 	do {
