@@ -1,10 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-//Lagerverwaltung
-
 
 int main() {
+	
 	typedef int item;
 	typedef char max;
 	typedef int GanzvieleBuchstaben;
@@ -21,10 +20,12 @@ int main() {
 
 	printf("Welcome to Warehouse Management 97\n\n\nWhat do you want to do ?\n");
 	
-	
-	GanzvieleBuchstaben a,l,f,i,v,x,p,c,я,и,ii;
+	GanzvieleBuchstaben a,l,f,i,v,x,p,c,я,и,ii,pp,stand,hh;
 	int exit, end, all;
 	int b = 201;
+	int zuviel = 0;
+	char ente[40];
+	char uff;
 /*
 	x	= für die case 
 	v	= um zu schauen ob man am ende plural oder singular benutz werden muss | case 1
@@ -35,7 +36,6 @@ int main() {
 	a	= case 2 while
 	b	= save case 2 for if
 */
-	
 	char ques, nu1;
 	char find [100];
 	
@@ -45,14 +45,41 @@ int main() {
 		
 		switch (x) {
 			case 1://add
-				do {
+				do {printf("%i",zuviel);
 					
 					printf("\nEnter the product name:  ");
-					scanf("%s", lager[l].artikel);
+					scanf("%s", ente);
 					
-					printf("\nAmount of products:  ");
-					scanf("%i", &lager[l].anzahl);
-			
+					for (pp=0;pp<l;pp++) {
+						if (strcmp(ente, lager[pp].artikel)==0) {
+							zuviel=10;
+							stand=pp;
+						}
+					}
+					
+					if (zuviel==10) {
+						fflush(stdin);
+						printf("Item already on stock, do  you want to configurate it (Y/N)?");
+						scanf("%c", &uff);
+						switch (uff) {
+							case 'Y':
+								printf("%s currently has %i items",lager[stand].artikel, lager[stand].anzahl);
+								printf("\nHow many items woud do you like to add ?\n");
+								scanf("%i", &hh);
+								lager[stand].anzahl += hh;
+								break;
+							case 'N':
+								break;
+							default:
+								break;
+						}
+					}
+					else {
+						strcpy(lager[l].artikel, ente);
+						printf("\nAmount of products:  ");
+						scanf("%i", &lager[l].anzahl);
+					}
+					fflush(stdin);
 					printf("\n\nAdd another product ? (Y/N)");
 					// add a space before % to skip leading whitespace
 					scanf(" %c", &ques);
@@ -72,6 +99,7 @@ int main() {
 							break;
 					}
 				} while (end != 1);
+				
 				if (v >= 2) {
 					printf("Product added successfully\n\n");
 				}else {
