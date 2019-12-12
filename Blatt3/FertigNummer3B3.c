@@ -20,7 +20,7 @@ int main() {
 
 	printf("Welcome to Warehouse Management 97\n\n\nWhat do you want to do ?\n");
 	
-	GanzvieleBuchstaben a,l,f,i,v,x,p,c,я,и,ii,pp,stand,hh;
+	GanzvieleBuchstaben a,l,f,i,v,x,p,c,я,и,ii,pp,stand,hh,zz;
 	int exit, end, all;
 	int b = 201;
 	int zuviel = 0;
@@ -35,6 +35,7 @@ int main() {
 	end	= beendet Case 1
 	a	= case 2 while
 	b	= save case 2 for if
+	l	= anzahl aller lager dinger.
 */
 	char ques, nu1;
 	char find [100];
@@ -45,10 +46,17 @@ int main() {
 		
 		switch (x) {
 			case 1://add
-				do {printf("%i",zuviel);
-					
+				do {
 					printf("\nEnter the product name:  ");
 					scanf("%s", ente);
+					
+					// Fixt den Namen
+					int len = strlen(ente);
+					for(zz=1; zz<len; zz++) {
+						if(ente[zz] >= 'A' && ente[zz] <= 'Z') {
+							ente[zz] += 32;
+						}
+					}
 					
 					for (pp=0;pp<l;pp++) {
 						if (strcmp(ente, lager[pp].artikel)==0) {
@@ -69,16 +77,16 @@ int main() {
 								lager[stand].anzahl += hh;
 								break;
 							case 'N':
-								break;
 							default:
 								break;
 						}
-					}
-					else {
+					} else {
 						strcpy(lager[l].artikel, ente);
 						printf("\nAmount of products:  ");
 						scanf("%i", &lager[l].anzahl);
 					}
+					
+					
 					fflush(stdin);
 					printf("\n\nAdd another product ? (Y/N)");
 					// add a space before % to skip leading whitespace
@@ -113,7 +121,6 @@ int main() {
 				scanf("%s", find);
 				
 				for (a=0;a<=l;a++) {
-					
 					if(strcmp(find, lager[a].artikel)==0) {
 						printf("The item is on stock!");
 						b=a;
@@ -123,10 +130,11 @@ int main() {
 				if (b == 201) {
 					printf("Article not found ");
 					break;
-				}else {
+				} else {
 					я=0;
 					do {
 					printf("What woud you like to edit?\n(1)increase amount\n(2)decrease amount\n(3)Exit\nEnter number: ");
+					
 					scanf("%i", &p);
 						switch (p) {
 							case 1:// erhöhen
@@ -142,10 +150,9 @@ int main() {
 								
 								if (c > lager[b].anzahl) {
 									printf("You don't have enough Items");
-								}else {
+								} else {
 									lager[b].anzahl -= c;
-								}
-								break;
+								} break;
 							case 3://Exit
 								printf("Menue");
 								я=2;
@@ -154,8 +161,8 @@ int main() {
 								continue;
 						}
 					} while (я==0);	
-				}
-				break;
+				} break;
+				
 			case 3://search	
 				printf("What woud you like to search ?");
 				fflush(stdin);
@@ -169,6 +176,7 @@ int main() {
 				}
 				if (ii == 0) printf("Item does not exist");
 				break;
+				
 			case 4://Spam-it
 				i=0;
 				while (i<=l) {
