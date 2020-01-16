@@ -19,7 +19,19 @@ class Aufgabe_7 {
 		
 		// Taxen einreihen 
 		
-		taxistand.add(vik);
-	//	
+		taxistand.rein(vik);
+		
+		System.out.println("\n1. Situation");
+		taxistand.clear();
+		taxistand.rein(vik);
+		taxistand.rein(cur);
+		taxistand.rein(bob);
+		taxistand.rein(job);
+		taxistand.raus();
+		taxistand.rein(amTor);
+		taxistand.rein(moz);
+		taxistand.ausgeben();
+		
+		
 	}
 }
